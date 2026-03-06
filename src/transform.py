@@ -41,13 +41,18 @@ def transform_json_to_parquet():
         if name_serie == "selic":
             df["mes"] = df["data"].dt.to_period("M")
 
+             # pega último valor do mês (taxa anual daquele mês)
             df = (
                 df.groupby("mes")["valor"]
-                .mean()
+                .last()
                 .reset_index()
             )
 
-            # Converte período para timestamp (primeiro dia do mês)
+            # Converter a taxa anual -> taxa mensal equivalente
+            df["valor"] = (1 + df["valor"] / 100) ** (1/12) - 1
+            df["valor"] = df["valor"] * 100
+        
+            # Converte período para data
             df["data"] = df["mes"].dt.to_timestamp()
             
             # Mantém apenas colunas finais

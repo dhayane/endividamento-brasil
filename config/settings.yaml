@@ -1,0 +1,35 @@
+project: 
+  name: "Analise de 10 anos do Endividamento das Familias"
+  version: "0.1.0"
+
+api: 
+  base_url: "https://api.bcb.gov.br/dados/serie/bcdata.sgs"
+  format: "json"
+  timeout: 60
+
+bacen_series:
+  endividamento_familias: 29037
+  inadimplencia_pf: 21084 # ID da séria no SGS (- Sistema Gerenciador de Séries Temporais)
+  inadimplencia_total: 21082 # ID da série no SGS
+  selic: 432           # ID da taxa Selic
+
+paths: 
+  raw_data: "data/raw/"
+  clean_data: "data/clean/"
+  analytics_data: "data/analytics/"
+  logs: "logs/"
+
+analysis:
+  start_date: "06/03/2016"
+  end_date: "06/03/2026"
+  calculate_variation: true
+  calculate_correlation: true
+
+logging:
+  level: "INFO"
+  file_name: "project.log"
+
+features: 
+  save_raw: true 
+  save_clean: truez 
+  run_analytics: true

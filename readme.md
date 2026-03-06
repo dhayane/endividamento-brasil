@@ -52,6 +52,9 @@ Dataset analítico (Parquet)
 ↓
 Dashboard interativo (Streamlit)
 
+## 🏗 Arquitetura do Pipeline
+
+![Arquitetura](images/arquitetura_pipeline.png)
 ---
 # 📂 Estrutura do projeto: 
 ENDIVIDAMENTO-BRASIL/
